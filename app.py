@@ -11,7 +11,7 @@ UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-app.config["MAX_CONTENT_LENGTH"] = 15 * 1024 * 1024
+app.config["MAX_CONTENT_LENGTH"] = 15 * 1024 * 1024  # 15 MB
 
 # Configuración de Flask-Mail
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -32,10 +32,12 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
+# Cambiado para que coincida con tu HTML ('enviar_cotizacion')
+@app.route('/enviar-cotizacion', methods=['POST'])
 @app.route('/solicitar', methods=['POST'])
-def solicitar():
-    nombre = request.form.get('nombre') or 'No especificado'
-    telefono = request.form.get('telefono') or 'No especificado'
+def enviar_cotizacion():
+    nombre = request.form.get('nombre') or request.form.get('empresa') or 'No especificado'
+    telefono = request.form.get('telefono') or request.form.get('whatsapp') or 'No especificado'
     marca = request.form.get('marca') or 'No especificada'
     comentarios = request.form.get('comentarios') or 'Sin comentarios'
     
@@ -48,8 +50,8 @@ def solicitar():
         )
         msg.body = f"""
         Nueva solicitud en CotizaFerre:
-        - Cliente: {nombre}
-        - Teléfono: {telefono}
+        - Cliente/Empresa: {nombre}
+        - Teléfono/WhatsApp: {telefono}
         - Marca: {marca}
         - Comentarios: {comentarios}
         """
@@ -62,7 +64,7 @@ def solicitar():
         mail.send(msg)
         flash("Solicitud enviada con éxito.", "success")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error al enviar correo: {e}")
         
     return redirect(url_for('index'))
 

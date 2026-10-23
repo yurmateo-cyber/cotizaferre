@@ -2,13 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import os
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'daidadalos@gmail.com'
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = 'daidadalos@gmail.com'
+
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "cotizaferre-clave-secreta-2026")
 

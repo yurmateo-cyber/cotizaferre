@@ -364,5 +364,54 @@
     <small>© 2026 CotizaFerre</small>
   </div>
 </footer>
+
+<!-- Botón flotante de WhatsApp CotizaFerre -->
+<a
+  href="https://wa.me/51949804480?text=Hola%2C%20quiero%20solicitar%20una%20cotizaci%C3%B3n%20en%20CotizaFerre."
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar a CotizaFerre por WhatsApp"
+>
+  <span class="whatsapp-icon">☏</span>
+  <span>Escríbenos por WhatsApp</span>
+</a>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  border-radius: 40px;
+  box-shadow: 0 4px 12px #0003;
+}
+.whatsapp-icon {
+  font-size: 25px;
+}
+.whatsapp-float:hover {
+  background: #1ebe5d;
+}
+@media (max-width: 480px) {
+  .whatsapp-float {
+    right: 12px;
+    bottom: 12px;
+    padding: 12px 15px;
+  }
+}
+</style>
+
+<p style="text-align:center; margin-top:10px;">
+  WhatsApp: +51 949 804 480
+</p>
 </body>
 </html>

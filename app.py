@@ -72,6 +72,9 @@ def enviar_cotizacion():
 
 @app.route("/uploads/<path:filename>")
 def uploaded_file(filename):
+    Flask
+Flask-Mail==0.9.1
+werkzeug
     # Ruta simple para uso local. En producción, protege esta ruta con autenticación.
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename, as_attachment=True)
 

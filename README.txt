@@ -1,5 +1,5 @@
 COTIZAFERRE - sitio web inicial (Python + Flask)
-
+pip install Flask gunicorn
 QUÉ INCLUYE
 - Página minimalista y adaptable a celular y computadora.
 - Marcas: Tuboplast, Nicoll y Pavco.
